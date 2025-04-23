@@ -8,7 +8,7 @@ const Projects = () => {
       technologies: ["MongoDB", "Express.js", "React", "Node.js"],
       liveDemo: "https://quiz-reactjs-five.vercel.app/",
       github: "",
-      image: "/images/quiz.webp"
+      image: "/images/Qiuz.webp"
     },
     {
       title: "Product Management System",

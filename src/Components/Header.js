@@ -96,7 +96,7 @@ const Navbar = () => {
             <img 
               src="/images/mainlogo.webp" 
               alt="Logo" 
-              className="h-8 w-auto sm:h-9 transition-all duration-300 hover:brightness-110" // Adjusted logo size
+              className="h-14 w-auto sm:h-16 transition-all duration-300 hover:brightness-110" // Adjusted logo size
             />
           </motion.div>
 
