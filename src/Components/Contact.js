@@ -48,12 +48,12 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white dark:bg-gray-900">
+    <section id="contact" className="py-12 sm:py-20 bg-white dark:bg-gray-900">
       <motion.div
         ref={ref}
         initial="hidden"
         animate={controls}
-        className="container mx-auto px-6"
+        className="container mx-auto px-4 sm:px-6"
       >
         <motion.div
           variants={{
@@ -66,10 +66,10 @@ const Contact = () => {
           }}
           className="text-center"
         >
-          <h2 className="text-4xl font-bold mb-8 text-gray-900 dark:text-white">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-gray-900 dark:text-white">
             Get In <span className="text-primary">Touch</span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12">
+          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8 sm:mb-12">
             Have a question or want to work together? Feel free to reach out!
           </p>
         </motion.div>

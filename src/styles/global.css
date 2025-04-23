@@ -70,16 +70,35 @@ DELETE END */
 }
 
 /* Button styles */
-.button-primary {
-  @apply px-8 py-3 bg-primary text-white rounded-full font-semibold 
-         transition-all duration-300 hover:bg-neon-green hover:shadow-lg 
-         hover:shadow-neon-green/20;
-}
+@layer components {
+  .button-primary {
+    @apply flex items-center justify-center
+           px-6 py-3 rounded-full
+           bg-gradient-to-r from-gradient-1 to-gradient-2 
+           text-white font-semibold
+           transition-all duration-300 
+           active:scale-95
+           text-sm md:text-base;
+  }
 
-.button-secondary {
-  @apply px-8 py-3 border-2 border-primary rounded-full font-semibold 
-         transition-all duration-300 hover:border-neon-green hover:text-neon-green 
-         hover:shadow-lg hover:shadow-neon-green/20;
+  .button-secondary {
+    @apply flex items-center justify-center
+           px-6 py-3 rounded-full
+           border-2 border-primary text-primary
+           font-semibold
+           transition-all duration-300 
+           hover:bg-primary/10
+           active:scale-95
+           text-sm md:text-base;
+  }
+
+  .social-icon-link {
+    @apply p-2.5 rounded-full 
+           border border-primary text-primary 
+           hover:border-neon-green hover:text-neon-green 
+           transition-all duration-300
+           active:scale-95;
+  }
 }
 
 /* Section transitions */
