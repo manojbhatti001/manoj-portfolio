@@ -36,9 +36,27 @@ module.exports = {
       perspective: {
         '1000': '1000px',
       },
+      boxShadow: {
+        'glow': '0 0 15px rgba(139,92,246,0.3)',
+      },
       transitionTimingFunction: {
         'bounce-custom': 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
       },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
+        'spin-reverse': {
+          '0%': { transform: 'rotate(360deg)' },
+          '100%': { transform: 'rotate(0deg)' },
+        }
+      },
+      animation: {
+        'spin-slow': 'spin 15s linear infinite',
+        'spin-reverse': 'spin-reverse 8s linear infinite',
+        'float': 'float 6s ease-in-out infinite',
+      }
     },
   },
   variants: {

@@ -267,6 +267,24 @@ const Header = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
+                {/* Animated Rings */}
+                <div className="absolute inset-0 rounded-full">
+                  {/* Outer spinning ring with gradient */}
+                  <div className="w-full h-full rounded-full border-4 border-t-primary border-r-white/40 border-b-primary/40 border-l-white/40 animate-[spin_8s_linear_infinite]" />
+                  
+                  {/* Middle pulsing ring */}
+                  <div className="absolute inset-2 rounded-full border-4 border-white/30 animate-pulse" />
+                  
+                  {/* Inner rotating gradient ring */}
+                  <div className="absolute inset-4 rounded-full border-4 border-t-white border-r-primary/50 border-b-white/50 border-l-primary animate-[spin_6s_linear_infinite_reverse]" />
+                </div>
+
+                {/* Glowing effect behind image */}
+                <div className="absolute inset-4 rounded-full">
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-white/20 to-primary/30 blur-xl animate-pulse" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-primary/20 to-white/10 animate-[spin_15s_linear_infinite]" />
+                </div>
+
                 <div className="absolute inset-4 rounded-full overflow-hidden bg-gradient-to-b from-white/50 to-white/30 backdrop-blur-sm shadow-xl">
                   <img
                     src="/images/manoj.jpg"
@@ -329,19 +347,52 @@ const Header = () => {
                 transition={{ delay: 0.6 }}
               >
                 {[
-                  { icon: FaGithub, url: "https://github.com/manojbhatti001" },
-                  { icon: FaLinkedin, url: "https://linkedin.com/in/manojbhatti" },
-                  { icon: FaInstagram, url: "https://www.instagram.com/_manojbhatti_/" }
-                ].map(({ icon: Icon, url }) => (
+                  { 
+                    icon: FaGithub, 
+                    url: "https://github.com/manojbhatti001",
+                    color: "hover:text-[#2ea44f]",
+                    bgColor: "hover:bg-[#2ea44f]/10"
+                  },
+                  { 
+                    icon: FaLinkedin, 
+                    url: "https://linkedin.com/in/manojbhatti",
+                    color: "hover:text-[#0a66c2]",
+                    bgColor: "hover:bg-[#0a66c2]/10"
+                  },
+                  { 
+                    icon: FaInstagram, 
+                    url: "https://www.instagram.com/_manojbhatti_/",
+                    color: "hover:text-[#e4405f]",
+                    bgColor: "hover:bg-[#e4405f]/10"
+                  }
+                ].map(({ icon: Icon, url, color, bgColor }) => (
                   <motion.a 
                     key={url}
                     href={url}
-                    className="social-icon-link"
+                    className={`relative group p-4 rounded-full border-2 border-primary/50 
+                      ${color} ${bgColor}
+                      transition-all duration-300 ease-out
+                      hover:border-transparent hover:shadow-lg hover:shadow-primary/20`}
+                    whileHover={{ 
+                      scale: 1.15,
+                      y: -8,
+                      transition: {
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 10
+                      }
+                    }}
                     whileTap={{ scale: 0.95 }}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Icon className="text-lg" />
+                    <Icon className="text-2xl relative z-10" />
+                    {/* Animated background effect */}
+                    <span className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 to-transparent 
+                      opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    {/* Glow effect */}
+                    <span className="absolute inset-0 rounded-full blur-md bg-gradient-to-r from-primary/30 via-transparent to-primary/30 
+                      opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </motion.a>
                 ))}
               </motion.div>
@@ -394,20 +445,52 @@ const Header = () => {
                 {/* Desktop Social Links */}
                 <div className="flex gap-6">
                   {[
-                    { icon: FaGithub, url: "https://github.com/manojbhatti001" },
-                    { icon: FaLinkedin, url: "https://linkedin.com/in/manojbhatti" },
-                    { icon: FaInstagram, url: "https://www.instagram.com/_manojbhatti_/" }
-                  ].map(({ icon: Icon, url }) => (
+                    { 
+                      icon: FaGithub, 
+                      url: "https://github.com/manojbhatti001",
+                      color: "hover:text-[#2ea44f]",
+                      bgColor: "hover:bg-[#2ea44f]/10"
+                    },
+                    { 
+                      icon: FaLinkedin, 
+                      url: "https://linkedin.com/in/manojbhatti",
+                      color: "hover:text-[#0a66c2]",
+                      bgColor: "hover:bg-[#0a66c2]/10"
+                    },
+                    { 
+                      icon: FaInstagram, 
+                      url: "https://www.instagram.com/_manojbhatti_/",
+                      color: "hover:text-[#e4405f]",
+                      bgColor: "hover:bg-[#e4405f]/10"
+                    }
+                  ].map(({ icon: Icon, url, color, bgColor }) => (
                     <motion.a 
                       key={url}
                       href={url}
-                      className="social-icon-link"
-                      whileHover={{ scale: 1.1, y: -5 }}
+                      className={`relative group p-4 rounded-full border-2 border-primary/50 
+                        ${color} ${bgColor}
+                        transition-all duration-300 ease-out
+                        hover:border-transparent hover:shadow-lg hover:shadow-primary/20`}
+                      whileHover={{ 
+                        scale: 1.15,
+                        y: -8,
+                        transition: {
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 10
+                        }
+                      }}
                       whileTap={{ scale: 0.95 }}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Icon className="text-2xl" />
+                      <Icon className="text-2xl relative z-10" />
+                      {/* Animated background effect */}
+                      <span className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 to-transparent 
+                        opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      {/* Glow effect */}
+                      <span className="absolute inset-0 rounded-full blur-md bg-gradient-to-r from-primary/30 via-transparent to-primary/30 
+                        opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </motion.a>
                   ))}
                 </div>
@@ -421,19 +504,93 @@ const Header = () => {
                 transition={{ duration: 0.5 }}
               >
                 <motion.div
-                  className="relative w-80 h-80 mx-auto"
-                  whileHover={{ scale: 1.02 }}
+                  className="relative w-80 h-80 mx-auto perspective-1000"
+                  whileHover={{ 
+                    scale: 1.02,
+                    transition: { duration: 0.3 }
+                  }}
                 >
+                  {/* Animated Rings */}
+                  <div className="absolute inset-0 rounded-full">
+                    {/* Outer spinning ring with gradient */}
+                    <div className="w-full h-full rounded-full border-4 border-t-primary border-r-white/40 
+                      border-b-primary/40 border-l-white/40 animate-[spin_8s_linear_infinite]
+                      shadow-[0_0_15px_rgba(139,92,246,0.3)]" />
+                    
+                    {/* Middle pulsing ring with sparkles */}
+                    <div className="absolute inset-2 rounded-full border-4 border-white/30 animate-pulse">
+                      <div className="absolute inset-0 animate-[spin_12s_linear_infinite]">
+                        {[...Array(6)].map((_, i) => (
+                          <div
+                            key={i}
+                            className="absolute w-1.5 h-1.5 bg-white rounded-full"
+                            style={{
+                              top: '50%',
+                              left: '50%',
+                              transform: `rotate(${i * 60}deg) translateY(-40px)`
+                            }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* Inner rotating gradient ring */}
+                    <div className="absolute inset-4 rounded-full border-4 border-t-white border-r-primary/50 
+                      border-b-white/50 border-l-primary animate-[spin_6s_linear_infinite_reverse]
+                      shadow-[inset_0_0_15px_rgba(139,92,246,0.3)]" />
+                  </div>
+
+                  {/* Enhanced glowing effect */}
+                  <div className="absolute inset-8 rounded-full">
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/40 via-white/30 to-primary/40 
+                      blur-xl animate-pulse" />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-white/20 via-primary/30 to-white/20 
+                      animate-[spin_15s_linear_infinite] opacity-75" />
+                  </div>
+
+                  {/* Floating particles */}
+                  <div className="absolute inset-0">
+                    <div className="absolute top-0 left-1/4 w-2 h-2 bg-white rounded-full animate-[float_4s_ease-in-out_infinite]" />
+                    <div className="absolute top-1/3 right-0 w-3 h-3 bg-primary/40 rounded-full animate-[float_6s_ease-in-out_infinite_1s]" />
+                    <div className="absolute bottom-0 right-1/4 w-2 h-2 bg-white/40 rounded-full animate-[float_5s_ease-in-out_infinite_0.5s]" />
+                  </div>
+
+                  {/* Image Container */}
                   <motion.div
                     className="absolute inset-8 rounded-full overflow-hidden bg-gradient-to-b from-white/50 to-white/30 backdrop-blur-sm shadow-xl"
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ 
+                      scale: 1.05,
+                      transition: {
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 20
+                      }
+                    }}
+                    initial={{ rotate: 0 }}
+                    animate={{ 
+                      rotate: [0, 5, -5, 0],
+                      transition: {
+                        duration: 6,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }
+                    }}
                   >
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-white/20 mix-blend-overlay" />
+                    
                     <img
                       src="/images/manoj.jpg"
                       alt="Manoj Bhatti"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
                     />
                   </motion.div>
+
+                  {/* Particle effects */}
+                  <div className="absolute inset-0 animate-[spin_20s_linear_infinite]">
+                    <div className="absolute top-0 left-1/2 w-2 h-2 bg-white/30 rounded-full blur-sm" />
+                    <div className="absolute bottom-0 right-1/2 w-2 h-2 bg-primary/30 rounded-full blur-sm" />
+                  </div>
                 </motion.div>
               </motion.div>
             </div>
