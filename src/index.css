@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-secondary text-gray-900 dark:text-white;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-gradient-1 via-gradient-2 to-gradient-3;
+  }
+
+  .social-icon-link {
+    @apply p-3 rounded-full border border-primary text-primary hover:border-neon-green hover:text-neon-green transition-all duration-300;
+  }
+
+  .glass-card {
+    @apply backdrop-blur-lg bg-white/90 border border-gray-200 rounded-xl shadow-sm;
+  }
+
+  .hover-card {
+    @apply transition-all duration-300 hover:border-primary/30 
+           hover:shadow-lg hover:shadow-primary/20 hover:scale-105;
+  }
+
+  .button-primary {
+    @apply px-6 py-3 rounded-full bg-gradient-to-r from-gradient-1 to-gradient-2 
+           text-white font-semibold transition-all duration-300 
+           hover:shadow-lg hover:shadow-gradient-1/20 hover:scale-105;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gradient-to-b from-gradient-1 to-gradient-2 rounded-full;
+}
+
+/* Animated background */
+.animated-bg {
+  background: linear-gradient(
+    -45deg,
+    theme('colors.gradient-1'),
+    theme('colors.gradient-2'),
+    theme('colors.gradient-3')
+  );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}

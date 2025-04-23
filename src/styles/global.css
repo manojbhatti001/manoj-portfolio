@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply transition-colors duration-300;
+  }
+}
+
+/* Smooth transitions for dark mode */
+.dark {
+  color-scheme: dark;
+}
+
+* {
+  transition-property: color, background-color, border-color;
+  transition-duration: 200ms;
+}
+
+/* Particle animation */
+/* DELETE START
+.particles-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.particle {
+  position: absolute;
+  width: var(--particle-size);
+  height: var(--particle-size);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: float 5s ease-in-out infinite;
+  animation-delay: var(--particle-delay);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+DELETE END */
+
+.hover-card {
+  @apply transition-all duration-300 hover:border-primary/30 
+         hover:shadow-lg hover:shadow-primary/20 hover:scale-105;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme('colors.secondary.DEFAULT');
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.accent.DEFAULT');
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.primary');
+}
+
+/* Button styles */
+.button-primary {
+  @apply px-8 py-3 bg-primary text-white rounded-full font-semibold 
+         transition-all duration-300 hover:bg-neon-green hover:shadow-lg 
+         hover:shadow-neon-green/20;
+}
+
+.button-secondary {
+  @apply px-8 py-3 border-2 border-primary rounded-full font-semibold 
+         transition-all duration-300 hover:border-neon-green hover:text-neon-green 
+         hover:shadow-lg hover:shadow-neon-green/20;
+}
+
+/* Section transitions */
+.section-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.section-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+/* Animated background */
+.animated-bg {
+  background: linear-gradient(
+    45deg,
+    theme('colors.secondary.DEFAULT'),
+    theme('colors.accent.DEFAULT'),
+    theme('colors.primary')
+  );
+  background-size: 400% 400%;
+  animation: gradient-xy 15s ease infinite;
+}
+
+.skill-card {
+  @apply backdrop-blur-lg bg-accent/20 border border-white/10 rounded-xl 
+         shadow-xl transition-all duration-300;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.skill-card:hover::before {
+  left: 100%;
+}
+
+.skill-card:hover {
+  @apply border-neon-purple/30 shadow-lg shadow-neon-purple/20;
+  transform: translateY(-5px);
+}
+
+@keyframes gradient-xy {
+  0%, 100% {
+    background-size: 400% 400%;
+    background-position: left top;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right bottom;
+  }
+}
+
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-from), var(--tw-gradient-to));
+}
