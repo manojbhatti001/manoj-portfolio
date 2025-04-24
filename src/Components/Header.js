@@ -176,9 +176,8 @@ const Navbar = () => {
         <div 
           className={`
             md:hidden fixed left-0 right-0 top-16 
-            bg-accent/98 dark:bg-accent-dark/98 
-            backdrop-blur-lg
-            border-b border-gray-200/20 dark:border-gray-700/20
+            bg-white dark:bg-gray-900  
+            border-b border-gray-200 dark:border-gray-700
             shadow-lg
             transition-all duration-300 ease-in-out
             transform
@@ -201,13 +200,13 @@ const Navbar = () => {
                       transition-all duration-300
                       ${isActive 
                         ? 'bg-primary/10 text-primary dark:text-primary-light font-medium' 
-                        : 'text-text-primary dark:text-text-primary-dark hover:bg-gray-100 dark:hover:bg-gray-800'
+                        : 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800'
                       }
                     `}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <Icon className="w-4 h-4" /> {/* Adjusted icon size */}
-                    <span className="text-sm">{name}</span> {/* Adjusted text size */}
+                    <Icon className="w-4 h-4" />
+                    <span className="text-sm">{name}</span>
                   </motion.button>
                 );
               })}
@@ -432,13 +431,13 @@ const Header = () => {
                   </motion.a>
                   
                   <motion.a 
-                    href="/Manoj.pdf"
+                    href="/pdf/Manoj.pdf"
                     className="button-secondary"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     <FaDownload className="text-xl mr-2" />
-                    Download CV
+                    View CV
                   </motion.a>
                 </div>
 

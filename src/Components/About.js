@@ -103,7 +103,7 @@ const About = () => {
 
                 {/* Download CV Button */}
                 <motion.a
-                  href="/Manoj.pdf"  // Updated path
+                  href="/pdf/Manoj.pdf"  // Updated path to the PDF file in the public/pdf folder.
                   className="mt-8 block w-full py-3 px-6 text-center bg-primary text-white rounded-lg
                            hover:bg-primary/90 transition-all font-medium"
                   whileHover={{ scale: 1.02 }}
@@ -149,21 +149,51 @@ const About = () => {
             </div>
 
             {/* Skills */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Technical Skills</h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 sm:p-8">
+              <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
+                Technical Skills
+              </h3>
+              <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                 {Object.entries(skillIcons).map(([skill, icon]) => (
                   <motion.div
                     key={skill}
-                    className="flex items-center gap-3 p-4 rounded-lg border border-gray-100 dark:border-gray-700
-                             hover:border-primary/30 hover:shadow-sm transition-all"
-                    whileHover={{ y: -2 }}
+                    className="group relative overflow-hidden"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   >
-                    <span className="text-2xl">{icon}</span>
-                    <span className="font-medium text-gray-900 dark:text-white">{skill}</span>
+                    <div className="relative z-10 flex items-center gap-3 p-4 rounded-xl
+                                  bg-white dark:bg-gray-800 
+                                  border border-gray-100 dark:border-gray-700
+                                  hover:border-primary/30 
+                                  shadow-sm hover:shadow-md
+                                  transition-all duration-300">
+                      {/* Animated background gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 
+                                    opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      
+                      {/* Icon with glow effect */}
+                      <div className="relative">
+                        <span className="text-2xl sm:text-3xl relative z-10 transition-transform duration-300 
+                                     group-hover:scale-110">{icon}</span>
+                        <div className="absolute inset-0 bg-current opacity-20 blur-sm scale-150 
+                                    group-hover:opacity-30 transition-opacity duration-300" />
+                      </div>
+
+                      {/* Skill name */}
+                      <span className="font-medium text-sm sm:text-base text-gray-900 dark:text-white 
+                                   relative z-10">{skill}</span>
+
+                      {/* Corner accent */}
+                      <div className="absolute -right-2 -top-2 w-8 h-8 bg-gradient-to-br from-primary/20 to-transparent 
+                                    rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
                   </motion.div>
                 ))}
               </div>
+
+            
+                
+              
             </div>
           </div>
         </div>
