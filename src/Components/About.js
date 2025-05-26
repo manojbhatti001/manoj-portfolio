@@ -149,51 +149,96 @@ const About = () => {
             </div>
 
             {/* Skills */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 sm:p-8">
-              <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
-                Technical Skills
-              </h3>
-              <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-                {Object.entries(skillIcons).map(([skill, icon]) => (
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4 sm:p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  Technical Skills
+                </h3>
+                <div className="flex-grow h-px bg-gradient-to-r from-primary/50 to-transparent" />
+              </div>
+
+              {/* Mobile Skills Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3">
+                {Object.entries(skillIcons).map(([skill, icon], index) => (
                   <motion.div
                     key={skill}
-                    className="group relative overflow-hidden"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    className="group"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <div className="relative z-10 flex items-center gap-3 p-4 rounded-xl
-                                  bg-white dark:bg-gray-800 
-                                  border border-gray-100 dark:border-gray-700
-                                  hover:border-primary/30 
-                                  shadow-sm hover:shadow-md
-                                  transition-all duration-300">
-                      {/* Animated background gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 
-                                    opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="relative h-full">
+                      {/* Card Background with Gradient Border */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-gradient-1 via-gradient-2 to-gradient-3 
+                                    rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       
-                      {/* Icon with glow effect */}
-                      <div className="relative">
-                        <span className="text-2xl sm:text-3xl relative z-10 transition-transform duration-300 
-                                     group-hover:scale-110">{icon}</span>
-                        <div className="absolute inset-0 bg-current opacity-20 blur-sm scale-150 
-                                    group-hover:opacity-30 transition-opacity duration-300" />
+                      {/* Main Card Content */}
+                      <div className="relative h-full p-0.5">
+                        <div className="relative h-full flex flex-col items-center justify-center gap-2 p-3 sm:p-4
+                                      rounded-lg bg-white dark:bg-gray-800 
+                                      border border-gray-100 dark:border-gray-700
+                                      group-hover:border-primary/30">
+                          
+                          {/* Icon Container */}
+                          <motion.div
+                            className="relative w-12 h-12 flex items-center justify-center"
+                            whileHover={{ scale: 1.1 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                          >
+                            {/* Glow Effect */}
+                            <div className="absolute inset-0 bg-primary/10 rounded-full blur-xl 
+                                          scale-0 group-hover:scale-150 transition-transform duration-300" />
+                            
+                            {/* Icon */}
+                            <div className="relative z-10 text-3xl sm:text-4xl transform 
+                                          group-hover:rotate-[360deg] transition-transform duration-700">
+                              {icon}
+                            </div>
+                          </motion.div>
+
+                          {/* Skill Name */}
+                          <span className="text-center font-medium text-sm sm:text-base 
+                                         text-gray-900 dark:text-white
+                                         group-hover:text-primary dark:group-hover:text-primary-light 
+                                         transition-colors duration-300">
+                            {skill}
+                          </span>
+
+                          {/* Animated Corner Accents */}
+                          <div className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 
+                                        border-transparent group-hover:border-primary 
+                                        transition-colors duration-300" />
+                          <div className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 
+                                        border-transparent group-hover:border-primary 
+                                        transition-colors duration-300" />
+                          <div className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 
+                                        border-transparent group-hover:border-primary 
+                                        transition-colors duration-300" />
+                          <div className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 
+                                        border-transparent group-hover:border-primary 
+                                        transition-colors duration-300" />
+                        </div>
                       </div>
 
-                      {/* Skill name */}
-                      <span className="font-medium text-sm sm:text-base text-gray-900 dark:text-white 
-                                   relative z-10">{skill}</span>
-
-                      {/* Corner accent */}
-                      <div className="absolute -right-2 -top-2 w-8 h-8 bg-gradient-to-br from-primary/20 to-transparent 
-                                    rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      {/* Floating Particles */}
+                      {[...Array(2)].map((_, i) => (
+                        <div
+                          key={i}
+                          className="absolute w-1 h-1 rounded-full bg-primary/50
+                                   opacity-0 group-hover:opacity-100
+                                   transition-opacity duration-300"
+                          style={{
+                            top: `${50 + (i * 30)}%`,
+                            left: i === 0 ? '-10%' : '110%',
+                            animation: `float${i + 1} 3s ease-in-out infinite`,
+                          }}
+                        />
+                      ))}
                     </div>
                   </motion.div>
                 ))}
               </div>
-
-            
-                
-              
             </div>
           </div>
         </div>

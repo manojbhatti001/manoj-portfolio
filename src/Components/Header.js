@@ -255,42 +255,107 @@ const Header = () => {
         <div className="fixed inset-0 bg-gradient-to-br from-secondary via-accent to-secondary opacity-70 -z-10" />
         
         {/* Hero Section */}
-        <div className="flex-grow flex items-center px-4 sm:px-6 pt-16 sm:pt-20">
+        <div className="flex-grow flex items-center px-4 sm:px-6 pt-32 sm:pt-36 md:pt-20"> {/* Significantly increased top padding for mobile */}
           <div className="container mx-auto">
             {/* Mobile Layout (Single Column) */}
-            <div className="flex flex-col gap-8 md:hidden items-center text-center">
+            <div className="flex flex-col gap-10 md:hidden items-center text-center mt-12"> {/* Increased top margin */}
               {/* Profile Image for Mobile */}
               <motion.div 
-                className="w-48 h-48 relative"
+                className="relative mt-6" /* Added extra top margin */
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                {/* Animated Rings */}
-                <div className="absolute inset-0 rounded-full">
-                  {/* Outer spinning ring with gradient */}
-                  <div className="w-full h-full rounded-full border-4 border-t-primary border-r-white/40 border-b-primary/40 border-l-white/40 animate-[spin_8s_linear_infinite]" />
-                  
-                  {/* Middle pulsing ring */}
-                  <div className="absolute inset-2 rounded-full border-4 border-white/30 animate-pulse" />
-                  
-                  {/* Inner rotating gradient ring */}
-                  <div className="absolute inset-4 rounded-full border-4 border-t-white border-r-primary/50 border-b-white/50 border-l-primary animate-[spin_6s_linear_infinite_reverse]" />
-                </div>
+                <motion.div
+                  className="relative w-56 h-56 mx-auto perspective-1000" /* Reduced size for better fit */
+                  whileHover={{ 
+                    scale: 1.02,
+                    transition: { duration: 0.3 }
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {/* Animated Rings */}
+                  <div className="absolute inset-0 rounded-full">
+                    {/* Outer spinning ring with gradient */}
+                    <div className="w-full h-full rounded-full border-4 border-t-primary border-r-white/40 
+                      border-b-primary/40 border-l-white/40 animate-[spin_8s_linear_infinite]
+                      shadow-[0_0_15px_rgba(139,92,246,0.3)]" />
+                    
+                    {/* Middle pulsing ring with sparkles */}
+                    <div className="absolute inset-2 rounded-full border-4 border-white/30 animate-pulse">
+                      <div className="absolute inset-0 animate-[spin_12s_linear_infinite]">
+                        {[...Array(6)].map((_, i) => (
+                          <div
+                            key={i}
+                            className="absolute w-1.5 h-1.5 bg-white rounded-full"
+                            style={{
+                              top: '50%',
+                              left: '50%',
+                              transform: `rotate(${i * 60}deg) translateY(-28px)` /* Adjusted for smaller size */
+                            }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* Inner rotating gradient ring */}
+                    <div className="absolute inset-4 rounded-full border-4 border-t-white border-r-primary/50 
+                      border-b-white/50 border-l-primary animate-[spin_6s_linear_infinite_reverse]
+                      shadow-[inset_0_0_15px_rgba(139,92,246,0.3)]" />
+                  </div>
 
-                {/* Glowing effect behind image */}
-                <div className="absolute inset-4 rounded-full">
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-white/20 to-primary/30 blur-xl animate-pulse" />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-primary/20 to-white/10 animate-[spin_15s_linear_infinite]" />
-                </div>
+                  {/* Enhanced glowing effect */}
+                  <div className="absolute inset-8 rounded-full">
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/40 via-white/30 to-primary/40 
+                      blur-xl animate-pulse" />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-white/20 via-primary/30 to-white/20 
+                      animate-[spin_15s_linear_infinite] opacity-75" />
+                  </div>
 
-                <div className="absolute inset-4 rounded-full overflow-hidden bg-gradient-to-b from-white/50 to-white/30 backdrop-blur-sm shadow-xl">
-                  <img
-                    src="/images/manoj.jpg"
-                    alt="Manoj Bhatti"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                  {/* Floating particles */}
+                  <div className="absolute inset-0">
+                    <div className="absolute top-0 left-1/4 w-2 h-2 bg-white rounded-full animate-[float_4s_ease-in-out_infinite]" />
+                    <div className="absolute top-1/3 right-0 w-3 h-3 bg-primary/40 rounded-full animate-[float_6s_ease-in-out_infinite_1s]" />
+                    <div className="absolute bottom-0 right-1/4 w-2 h-2 bg-white/40 rounded-full animate-[float_5s_ease-in-out_infinite_0.5s]" />
+                  </div>
+
+                  {/* Image Container */}
+                  <motion.div
+                    className="absolute inset-8 rounded-full overflow-hidden bg-gradient-to-b from-white/50 to-white/30 backdrop-blur-sm shadow-xl"
+                    whileHover={{ 
+                      scale: 1.05,
+                      transition: {
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 20
+                      }
+                    }}
+                    initial={{ rotate: 0 }}
+                    animate={{ 
+                      rotate: [0, 5, -5, 0],
+                      transition: {
+                        duration: 6,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }
+                    }}
+                  >
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-white/20 mix-blend-overlay" />
+                    
+                    <img
+                      src="/images/manoj.jpg"
+                      alt="Manoj Bhatti"
+                      className="w-full h-full object-cover transition-transform duration-300 active:scale-110"
+                    />
+                  </motion.div>
+
+                  {/* Particle effects */}
+                  <div className="absolute inset-0 animate-[spin_20s_linear_infinite]">
+                    <div className="absolute top-0 left-1/2 w-2 h-2 bg-white/30 rounded-full blur-sm" />
+                    <div className="absolute bottom-0 right-1/2 w-2 h-2 bg-primary/30 rounded-full blur-sm" />
+                  </div>
+                </motion.div>
               </motion.div>
 
               {/* Text Content for Mobile */}
