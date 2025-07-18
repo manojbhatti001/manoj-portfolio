@@ -26,7 +26,6 @@ const About = () => {
 
   const personalDetails = [
     { label: "Name", value: "Manoj Bhatti" },
-    { label: "Phone", value: "9992576972" },
     { label: "Email", value: "mbhatti9912@gmail.com" },
     { label: "Address", value: "Hisar, Haryana" },
     { label: "Languages", value: "English, Hindi" },

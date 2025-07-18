@@ -425,7 +425,7 @@ const Header = () => {
                   },
                   { 
                     icon: FaInstagram, 
-                    url: "https://www.instagram.com/_manojbhatti_/",
+                    url: "https://www.instagram.com/__manojbhati__",
                     color: "hover:text-[#e4405f]",
                     bgColor: "hover:bg-[#e4405f]/10"
                   }
@@ -523,7 +523,7 @@ const Header = () => {
                     },
                     { 
                       icon: FaInstagram, 
-                      url: "https://www.instagram.com/_manojbhatti_/",
+                      url: "https://www.instagram.com/__manojbhati__",
                       color: "hover:text-[#e4405f]",
                       bgColor: "hover:bg-[#e4405f]/10"
                     }
